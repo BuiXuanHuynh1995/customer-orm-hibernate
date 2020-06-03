@@ -6,6 +6,7 @@
 </head>
 <body>
 <form th:action="@{/update}" th:object="${customer}" method="post">
+    <input type="hidden" th:field="*{id}">
     <table>
         <tr>
             <td>Name</td>
@@ -21,7 +22,8 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update Customer"></td>
+            <td><input type="submit" value="Update Customer" onclick="return confirm('Are you sure update customer')"></td>
+            <td><a th:href="@{/}">Cancel</a></td>
         </tr>
     </table>
 </form>

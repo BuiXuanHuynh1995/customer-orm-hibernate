@@ -49,4 +49,18 @@ public class CustomerController {
         return getAllCustomer();
     }
 
+    @GetMapping("/delete")
+    private ModelAndView showFormDeleteCustomer(@RequestParam Long id){
+        ModelAndView modelAndView = new ModelAndView("/customer/delete");
+        modelAndView.addObject("customer",customerService.findById(id));
+        return modelAndView;
+    }
+
+    @PostMapping("/delete")
+    private ModelAndView deleteStudent(@RequestParam Long id,Model model){
+        customerService.delete(id);
+        model.addAttribute("success", "Removed student successfully!");
+        return getAllCustomer();
+    }
+
 }
